@@ -4,6 +4,7 @@ namespace Ch04Ex1MovieList.Models
 {
     public class Movie
     {
+        public string Slug => Name?.Replace(' ', '-').ToLower() + '-' + Year?.ToString(); 
         public int MovieId { get; set; }
 
         [Required(ErrorMessage = "Please enter a name.")]

@@ -27,6 +27,7 @@ namespace Ch04Ex1MovieList
         {
             services.AddControllersWithViews();
             services.AddDbContext<MovieContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MovieContext")));
+            services.AddRouting(options => { options.LowercaseUrls = true; options.AppendTrailingSlash = true;});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +54,7 @@ namespace Ch04Ex1MovieList
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
             });
         }
     }
